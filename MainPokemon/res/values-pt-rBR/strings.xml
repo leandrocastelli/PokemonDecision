@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Decisão Pokemon</string>
+    <string name="menu_settings">Configurações</string>
+     <string name="admob_id">a151e4ca42d4626</string>
+	<string name="bulbasaur">Bulbassauro</string>
+	<string name="charmander">Charmander</string>
+	<string name="squirtle">Squirtle</string>
+	<string name="pikachu">Pikachu</string>
+	<string name="rate">"Avalie " </string>
+	<string name="remind_later">"Lembrar depois" </string>
+	<string name="no_thanks">"Não, obrigado" </string>
+	<string name="format_rate">"Se você gostou de usar o %s,por favor gaste um tempo para avalia-lo. Obrigado por sua ajuda!"</string>
+</resources>
