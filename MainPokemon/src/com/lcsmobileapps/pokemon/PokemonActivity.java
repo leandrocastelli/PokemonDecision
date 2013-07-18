@@ -19,7 +19,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.Window;
-import android.view.WindowManager;
 
 import com.lcsmobileapps.pokemon.fragments.GenericFragment;
 import com.lcsmobileapps.pokemon.pojo.Pokemon;
@@ -27,6 +26,8 @@ import com.lcsmobileapps.pokemon.service.MediaService;
 import com.lcsmobileapps.pokemon.service.MediaService.LocalBinder;
 import com.lcsmobileapps.pokemon.service.SoundPlayer;
 import com.lcsmobileapps.pokemon.util.AppRater;
+import com.lcsmobileapps.pokemon.util.FileManager;
+import com.lcsmobileapps.pokemon.util.FileManager.Props;
 import com.lcsmobileapps.pokemon.util.ImageHelper;
 
 public class PokemonActivity extends FragmentActivity implements ServiceConnection{
@@ -127,6 +128,9 @@ public class PokemonActivity extends FragmentActivity implements ServiceConnecti
 			}
 		});
 
+		FileManager.map.put(0,Props.RINGTONE);
+		FileManager.map.put(1,Props.NOTIFICATION);
+		FileManager.map.put(2,Props.ALARM);
 	}
 
 	@Override
@@ -141,6 +145,7 @@ public class PokemonActivity extends FragmentActivity implements ServiceConnecti
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 	//	getMenuInflater().inflate(R.menu.activity_pokemon, menu);
+		super.onCreateOptionsMenu(menu);
 		return true;
 	}
 

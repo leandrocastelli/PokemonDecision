@@ -11,5 +11,6 @@ public class Squirtle extends Pokemon{
 		imageID = R.drawable.squirtle3;
 		soundID = R.raw.squirtle;
 		color = Color.BLUE;
+		keyword = "manga";
 	}
 }

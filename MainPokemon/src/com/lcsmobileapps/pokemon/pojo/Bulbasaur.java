@@ -11,5 +11,6 @@ public class Bulbasaur extends Pokemon{
 		imageID = R.drawable.bulbasaur1_1;
 		soundID = R.raw.bulbasaur;
 		color = Color.GREEN;
+		keyword = "download";
 	}
 }

@@ -7,6 +7,7 @@ public abstract class Pokemon {
 	protected int imageID;
 	protected int soundID;
 	protected int color;
+	protected String keyword;
 	
 	public String getName() { 
 		return name;
@@ -19,6 +20,9 @@ public abstract class Pokemon {
 	}
 	public int getColor(){
 		return color;
+	}
+	public String getKeyword() { 
+		return keyword;
 	}
 	public static final String ARGS_POSITION = "position";
 	

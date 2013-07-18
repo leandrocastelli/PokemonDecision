@@ -10,5 +10,6 @@ public class Pikachu extends Pokemon{
 		imageID = R.drawable.pikachu2_1;
 		soundID = R.raw.pikachu;
 		color = Color.YELLOW;
+		keyword = "games";
 	}
 }

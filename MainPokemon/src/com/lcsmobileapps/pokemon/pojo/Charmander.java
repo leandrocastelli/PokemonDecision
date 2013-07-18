@@ -12,6 +12,7 @@ public class Charmander extends Pokemon{
 		imageID = R.drawable.charmander2_1;
 		soundID = R.raw.charmander;
 		color = Color.RED;
+		keyword = "computer";
 	}
 	
 }
