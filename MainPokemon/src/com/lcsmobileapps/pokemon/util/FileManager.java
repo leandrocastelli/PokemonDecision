@@ -94,7 +94,13 @@ public class FileManager {
 				path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS)+"/"+name+".mp3";
 				break;
 			case SEND:
-				path = ctx.getExternalFilesDir(null).getAbsolutePath()+"/"+name+".mp3";
+				File externalFilesDir = ctx.getExternalFilesDir(null);
+				if (externalFilesDir != null) {
+					path = externalFilesDir.getAbsolutePath()+"/"+name+".mp3";
+				}
+				else {
+					path = ctx.getFilesDir().getAbsolutePath()+"/"+where.name()+"/"+name+".mp3";
+				}
 				
 				break;
 			}

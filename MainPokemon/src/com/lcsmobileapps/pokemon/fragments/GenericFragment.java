@@ -7,9 +7,11 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -55,6 +57,7 @@ public class GenericFragment extends Fragment{
 				mainActivity.getPlayer().startPlaying(pokemon.getSound());
 			}
 		});
+		/*
 		AdRequest adRequest = new AdRequest();
 		//adRequest.addTestDevice("5A873CD5069A96C1FCBBEB66EB7CBC5A");
 		
@@ -66,6 +69,7 @@ public class GenericFragment extends Fragment{
 		Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
 		adRequest.setLocation(lastKnownLocation);
 		adView.loadAd(adRequest);
+		*/
 		return view;
 	};
 	private void loadImage(ImageView imgView, int id) {
@@ -92,6 +96,14 @@ public class GenericFragment extends Fragment{
 	public boolean onOptionsItemSelected(MenuItem item) {
 		final InputStream in = getResources().openRawResource(pokemon.getSound());
 		switch(item.getItemId()){
+		case R.id.menu_share: {
+			String path = FileManager.getInstance().copyFile(getActivity(), Props.SEND, in,pokemon);
+			Intent share = new Intent(Intent.ACTION_SEND);
+			share.setType("audio/*");
+			share.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///" + path));
+			startActivity(share);
+		}
+		break;
 		case R.id.menu_setas: {
 
 
@@ -113,6 +125,7 @@ public class GenericFragment extends Fragment{
 			
 			
 			
+			
 			final ArrayAdapter<String>  adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.select_dialog_item, android.R.id.text1, listString);
 			builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
 
@@ -124,6 +137,7 @@ public class GenericFragment extends Fragment{
 						Props selection = FileManager.map.get(arg1);
 						path = FileManager.getInstance().copyFile(adapter.getContext(), selection, in,pokemon);
 						if((path!=null && path.length()>0)) { //API Lvl 8 doesnt have isEmpty
+							
 							result = FileManager.getInstance().setAs(path,selection, adapter.getContext());
 						}
 						

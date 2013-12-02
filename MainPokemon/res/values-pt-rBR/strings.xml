@@ -12,7 +12,7 @@
 	<string name="remind_later">"Lembrar depois" </string>
 	<string name="no_thanks">"Não, obrigado" </string>
 	<string name="format_rate">"Se você gostou de usar o %s,por favor gaste um tempo para avalia-lo. Obrigado por sua ajuda!"</string>
-	
+	<string name="share">Compartilhar</string>
 	<string name="dialog_set_title">Configurar como</string>
 	<string name="ringtone">Toque de chamada</string>
 	<string name="notification">Notificação</string>

@@ -8,6 +8,8 @@ import android.content.ServiceConnection;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.Fragment;
@@ -19,8 +21,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
-import android.view.Window;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 import com.lcsmobileapps.pokemon.fragments.GenericFragment;
 import com.lcsmobileapps.pokemon.pojo.Pokemon;
 import com.lcsmobileapps.pokemon.service.MediaService;
@@ -133,14 +136,34 @@ public class PokemonActivity extends ActionBarActivity implements ServiceConnect
 		FileManager.map.put(0,Props.RINGTONE);
 		FileManager.map.put(1,Props.NOTIFICATION);
 		FileManager.map.put(2,Props.ALARM);
+		FileManager.map.put(3,Props.SEND);
+		AdRequest adRequest = new AdRequest();
+		//adRequest.addTestDevice("5A873CD5069A96C1FCBBEB66EB7CBC5A");
+		
+		//adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+		AdView adView = (AdView)findViewById(R.id.ad);
+//		adRequest.addKeyword();
+		String locationProvider = LocationManager.NETWORK_PROVIDER;
+		LocationManager locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+		Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+		adRequest.setLocation(lastKnownLocation);
+		adView.loadAd(adRequest);
 	}
 
 	@Override
-	protected void onResume() {
+	public void onStop() {
+		super.onStop();
+		boolean isBound = bindService(new Intent(this,MediaService.class), this, Context.BIND_AUTO_CREATE);
+		if(isBound)
+			unbindService(this);
+		
+	}
+	
+	@Override
+	public void onResume() {
 		super.onResume();
-
-
-
+		bindService(new Intent(this,MediaService.class), this, Context.BIND_AUTO_CREATE);
+		
 	}
 
 	@Override
