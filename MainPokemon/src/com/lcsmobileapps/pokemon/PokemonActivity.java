@@ -1,5 +1,6 @@
 package com.lcsmobileapps.pokemon;
 
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -10,13 +11,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.util.LruCache;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.Window;
 
@@ -30,7 +31,7 @@ import com.lcsmobileapps.pokemon.util.FileManager;
 import com.lcsmobileapps.pokemon.util.FileManager.Props;
 import com.lcsmobileapps.pokemon.util.ImageHelper;
 
-public class PokemonActivity extends FragmentActivity implements ServiceConnection{
+public class PokemonActivity extends ActionBarActivity implements ServiceConnection{
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -51,7 +52,7 @@ public class PokemonActivity extends FragmentActivity implements ServiceConnecti
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		bindService(new Intent(this,MediaService.class), this, Context.BIND_AUTO_CREATE);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+	//	requestWindowFeature(Window.FEATURE_NO_TITLE);
 //		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
 //				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
@@ -65,6 +66,7 @@ public class PokemonActivity extends FragmentActivity implements ServiceConnecti
 			cacheSize = maxMemory / 6;
 		}
 		
+
 		ImageHelper.mMemoryCache = new LruCache<String, Bitmap>(cacheSize);
 		setContentView(R.layout.activity_pokemon);
 

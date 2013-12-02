@@ -36,6 +36,9 @@ public class MediaService extends Service implements SoundPlayer{
 	}
 	public void startPlaying(int soundID)
 	{
+		try {
+			
+		
 		if(player!= null)
 		{
 			if(player.isPlaying())
@@ -54,7 +57,15 @@ public class MediaService extends Service implements SoundPlayer{
 			}
 		});
 	    player.start();
-	  
+		}
+		catch (IllegalStateException e ){
+			player = null;
+			startPlaying(soundID);
+		}
+		catch (NullPointerException e ){
+			player = null;
+			startPlaying(soundID);
+		}
 	}
 	
 	@Override

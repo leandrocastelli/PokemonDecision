@@ -56,8 +56,9 @@ public class GenericFragment extends Fragment{
 			}
 		});
 		AdRequest adRequest = new AdRequest();
-		//adRequest.addTestDevice("89E1AAF3C3FB0B29BA39B0E77040BDEF");
-		adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
+		//adRequest.addTestDevice("5A873CD5069A96C1FCBBEB66EB7CBC5A");
+		
+		//adRequest.addTestDevice(AdRequest.TEST_EMULATOR);
 		AdView adView = (AdView)view.findViewById(R.id.ad);
 		adRequest.addKeyword(pokemon.getKeyword());
 		String locationProvider = LocationManager.NETWORK_PROVIDER;
@@ -122,7 +123,7 @@ public class GenericFragment extends Fragment{
 												
 						Props selection = FileManager.map.get(arg1);
 						path = FileManager.getInstance().copyFile(adapter.getContext(), selection, in,pokemon);
-						if((path.length()>0)) { //API Lvl 8 doesnt have isEmpty
+						if((path!=null && path.length()>0)) { //API Lvl 8 doesnt have isEmpty
 							result = FileManager.getInstance().setAs(path,selection, adapter.getContext());
 						}
 						
